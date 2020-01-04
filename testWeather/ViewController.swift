@@ -1,66 +1,49 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+class ViewController: UIViewController, LocationServiceDelegate {
     
     @IBOutlet weak var cityLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var currentlyTemp: UILabel!
+    @IBOutlet weak var weekdayLabel: UILabel!
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var minTempLabel: UILabel!
     
-    
-    let API_KEY = "c42721f2ac1674948d866a6ab30c8cba"
-    
-    let locationManager = CLLocationManager()
-    var userLocation: CLLocation?
+    private let locationManager = LocationService.shared
+    private let networker = Networker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupLocationManager()
-        
+        LocationService.shared.delegate = self
+        networker.delegate = self
     }
     
-    func setupLocationManager() {
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        locationManager.startUpdatingLocation()
+    func onLocationUpdate(location: CLLocation) {
+        networker.sentRequest(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        userLocation = locations[0] as CLLocation
-        print("Longitude: \(userLocation!.coordinate.longitude)")
-        print("Latitude: \(userLocation!.coordinate.latitude)")
-        getWeather(for: ((userLocation!.coordinate.latitude), (userLocation!.coordinate.longitude)))
+    func onLocationDidFailWithError(error: Error) {
+        print("Error!")
     }
     
-    struct Response: Codable {
-        var timezone: String?
-        struct Daily: Codable {
-            var moonPhase: Double
+    //MARK: - Update UI
+    func updateUI(city: String, status: String, currTemp: String, maxTemp: String, minTemp: String) {
+        DispatchQueue.main.async {
+            self.cityLabel.text = city
+            self.statusLabel.text = status
+            self.currentlyTemp.text = currTemp + "°"
+            self.maxTempLabel.text = maxTemp
+            self.minTempLabel.text = minTemp
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "EEEE"
+            self.weekdayLabel.text = dateFormatter.string(from: Date())
         }
-         var data: [Daily]
-    }
-    
-    
-    func getWeather(for coordinates: (latitude: Double, longitude: Double)) {
-        let latitude = userLocation?.coordinate.latitude ?? 0.0
-        let longitude = userLocation?.coordinate.longitude ?? 0.0
-        let session = URLSession.shared
-        let url = URL(string: "https://api.darksky.net/forecast/\(API_KEY)/\(longitude),\(latitude)/?exclude=minutely,hourly,alerts,flags")!
-        let task = session.dataTask(with: url) { (data, response, error) in
-            if error != nil { print(error); return }
-            let decoder = JSONDecoder()
-            print(url)
-            do {
-                let resp = try decoder.decode(Response.self, from: data!)
-                DispatchQueue.main.async {
-                     self.cityLabel.text =  resp.timezone ?? "Unknown"
-                    print(resp.data[0].moonPhase)
-                }
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        task.resume()
     }
 }
 
-
+extension ViewController: NetworkDelegate {
+    func didReceiveData(_ data: Welcome) {
+        updateUI(city: data.timezone, status: data.currently.summary, currTemp: String(Int(data.currently.temperature)), maxTemp: String(Int(data.daily.data[0].temperatureMax)), minTemp: String(Int(data.daily.data[0].temperatureLow)))
+    }
+}
