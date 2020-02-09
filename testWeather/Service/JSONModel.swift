@@ -20,12 +20,9 @@ struct Currently: Codable {
     let time: Int
     let summary, icon: String
     let precipIntensity, precipProbability: Double
-    let precipType: String
     let temperature, apparentTemperature, dewPoint, humidity: Double
     let pressure, windSpeed, windGust: Double
-    let windBearing: Int
-    let cloudCover: Double
-    let uvIndex: Int
+    let windBearing, uvIndex: Int
     let visibility, ozone: Double
 }
 
@@ -43,7 +40,6 @@ struct Datum: Codable {
     let moonPhase, precipIntensity, precipIntensityMax: Double
     let precipIntensityMaxTime: Int
     let precipProbability: Double
-    let precipType: String
     let temperatureHigh: Double
     let temperatureHighTime: Int
     let temperatureLow: Double
@@ -65,5 +61,4 @@ struct Datum: Codable {
     let apparentTemperatureMinTime: Int
     let apparentTemperatureMax: Double
     let apparentTemperatureMaxTime: Int
-    let precipAccumulation: Double?
 }

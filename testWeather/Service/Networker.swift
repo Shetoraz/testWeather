@@ -27,7 +27,7 @@ class Networker {
                 let resp = try decoder.decode(Welcome.self, from: data)
                 self.delegate?.didReceiveData(resp)
             } catch {
-                print(error.localizedDescription)
+                print(error)
             }
         }.resume()
     }

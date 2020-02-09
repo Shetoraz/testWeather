@@ -9,6 +9,8 @@ class ViewController: UIViewController, LocationServiceDelegate {
     @IBOutlet weak var weekdayLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     private let locationManager = LocationService.shared
     private let networker = Networker()
@@ -16,7 +18,10 @@ class ViewController: UIViewController, LocationServiceDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         LocationService.shared.delegate = self
-        networker.delegate = self
+        networker.delegate = self 
+        tableView.separatorStyle = .none
+        tableView.backgroundColor = .none
+        collectionView.backgroundColor = .none
     }
     
     func onLocationUpdate(location: CLLocation) {
@@ -43,6 +48,7 @@ class ViewController: UIViewController, LocationServiceDelegate {
 }
 
 extension ViewController: NetworkDelegate {
+    
     func didReceiveData(_ data: Welcome) {
         updateUI(city: data.timezone, status: data.currently.summary, currTemp: String(Int(data.currently.temperature)), maxTemp: String(Int(data.daily.data[0].temperatureMax)), minTemp: String(Int(data.daily.data[0].temperatureLow)))
     }

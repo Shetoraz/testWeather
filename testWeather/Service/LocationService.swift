@@ -23,7 +23,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
         self.locationManager = CLLocationManager()
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.locationManager.requestAlwaysAuthorization()
-        self.locationManager.distanceFilter = 50
+        self.locationManager.distanceFilter = 100
         self.locationManager.delegate = self
         self.locationManager.startUpdatingLocation()
     }
@@ -50,9 +50,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     private func locationChanged(location: CLLocation) {
-        guard let delegate = self.delegate else {
-            return
-        }
+        guard let delegate = self.delegate else { return }
         delegate.onLocationUpdate(location: location)
     }
     
@@ -62,9 +60,7 @@ class LocationService: NSObject, CLLocationManagerDelegate {
     }
     
     private func locationFailed(error: Error) {
-        guard let delegate = self.delegate else {
-            return
-        }
+        guard let delegate = self.delegate else { return }
         delegate.onLocationDidFailWithError(error: error)
     }
 }
