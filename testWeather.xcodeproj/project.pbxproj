@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A909101C23C0F917001DB6E4 /* Networker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A909101B23C0F917001DB6E4 /* Networker.swift */; };
+		A977385723F1A73700F84085 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A977385623F1A73700F84085 /* MainModel.swift */; };
 		A989488F2399535A0055084B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A989488E2399535A0055084B /* AppDelegate.swift */; };
 		A98948912399535A0055084B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A98948902399535A0055084B /* ViewController.swift */; };
 		A98948942399535A0055084B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A98948922399535A0055084B /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		A909101B23C0F917001DB6E4 /* Networker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Networker.swift; sourceTree = "<group>"; };
+		A977385623F1A73700F84085 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
 		A989488B2399535A0055084B /* testWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A989488E2399535A0055084B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A98948902399535A0055084B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 			isa = PBXGroup;
 			children = (
 				A98948902399535A0055084B /* ViewController.swift */,
+				A977385623F1A73700F84085 /* MainModel.swift */,
 			);
 			path = "Main Scene";
 			sourceTree = "<group>";
@@ -170,6 +173,7 @@
 			files = (
 				A909101C23C0F917001DB6E4 /* Networker.swift in Sources */,
 				A9CD6D6C23C0E73500AA65E9 /* LocationService.swift in Sources */,
+				A977385723F1A73700F84085 /* MainModel.swift in Sources */,
 				A9CD6D6A23C0DFD600AA65E9 /* JSONModel.swift in Sources */,
 				A98948912399535A0055084B /* ViewController.swift in Sources */,
 				A989488F2399535A0055084B /* AppDelegate.swift in Sources */,

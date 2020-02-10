@@ -109,7 +109,7 @@
                         <outlet property="currentlyTemp" destination="PRP-ef-rPC" id="8Bo-qE-UVK"/>
                         <outlet property="maxTempLabel" destination="DzT-2M-a6H" id="7G2-rx-sSy"/>
                         <outlet property="minTempLabel" destination="7Mw-N6-zsm" id="8yW-qX-FAv"/>
-                        <outlet property="slider" destination="z98-qF-otC" id="Aqa-qr-e6M"/>
+                        <outlet property="slider" destination="uxG-LW-jw9" id="hee-bZ-4My"/>
                         <outlet property="statusLabel" destination="F3G-XJ-DmT" id="8A5-oW-Ubr"/>
                         <outlet property="timeLabel" destination="z98-qF-otC" id="Qo4-Am-arz"/>
                         <outlet property="weekdayLabel" destination="cBq-J4-8cV" id="uFL-Hp-9gc"/>
