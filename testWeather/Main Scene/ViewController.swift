@@ -11,7 +11,9 @@ class ViewController: UIViewController, LocationServiceDelegate {
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var slider: UISlider!
-    
+    @IBOutlet weak var statusImage: UIImageView!
+    @IBOutlet weak var backgroundImage: UIImageView!
+
     private let locationManager = LocationService.shared
     private let networker = Networker()
     private let model = Model()
@@ -38,6 +40,19 @@ class ViewController: UIViewController, LocationServiceDelegate {
             self.maxTempLabel.text = maxTemp + "°"
             self.minTempLabel.text = minTemp + "°"
             self.updateDate()
+            self.updateImages()
+        }
+    }
+
+    func updateImages() {
+        let hour = Calendar.current.component(.hour, from: Date())
+        switch hour {
+        case 1...12:
+            self.backgroundImage.image = #imageLiteral(resourceName: "background")
+        case 12...24:
+            self.backgroundImage.image = #imageLiteral(resourceName: "background")
+        default:
+            self.backgroundImage.image = #imageLiteral(resourceName: "background")
         }
     }
     
@@ -67,7 +82,8 @@ class ViewController: UIViewController, LocationServiceDelegate {
         default:
             self.timeLabel.text = ""
         }
-        self.currentlyTemp.text = String(self.model.hourWeather[Int(sender.value-1)])
+        let position = sender.value - sender.minimumValue
+        self.currentlyTemp.text = String(self.model.hourWeather[Int(position)])
     }
 }
 
@@ -76,8 +92,8 @@ extension ViewController: NetworkDelegate {
     func didReceiveData(_ data: Welcome) {
         updateUI(city: data.timezone, status: data.currently.summary, currTemp: String(Int(data.currently.temperature)), maxTemp: String(Int(data.daily.data[0].temperatureMax)), minTemp: String(Int(data.daily.data[0].temperatureLow)))
         
-        for hour in data.daily.data {
-            self.model.hourWeather.append(Int(hour.temperatureHigh))
+        for hour in data.hourly.data {
+            self.model.hourWeather.append(Int(hour.temperature))
         }
     }
 }

@@ -12,6 +12,7 @@ struct Welcome: Codable {
     let timezone: String
     let currently: Currently
     let daily: Daily
+    let hourly: Hourly
     let offset: Int
 }
 
@@ -61,4 +62,10 @@ struct Datum: Codable {
     let apparentTemperatureMinTime: Int
     let apparentTemperatureMax: Double
     let apparentTemperatureMaxTime: Int
+}
+
+// MARK: - Hourly
+struct Hourly: Codable {
+    let summary: String
+    let data: [Currently]
 }

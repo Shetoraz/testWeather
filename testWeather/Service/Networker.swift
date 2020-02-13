@@ -18,7 +18,7 @@ class Networker {
     
     func sentRequest(latitude: Double, longitude: Double) {
         let API_KEY = "c42721f2ac1674948d866a6ab30c8cba"
-        let url = URL(string: "https://api.darksky.net/forecast/\(API_KEY)/\(latitude),\(longitude)/?exclude=minutely,hourly,alerts,flags&units=si")!
+        let url = URL(string: "https://api.darksky.net/forecast/\(API_KEY)/\(latitude),\(longitude)/?exclude=minutely,alerts,flags&units=si")!
         let session = URLSession.shared
         let decoder = JSONDecoder()
         session.dataTask(with: url) { (data, _ , error) in

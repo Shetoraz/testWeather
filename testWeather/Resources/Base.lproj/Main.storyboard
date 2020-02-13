@@ -105,11 +105,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundImage" destination="MFq-zZ-yXh" id="HRy-IT-MgF"/>
                         <outlet property="cityLabel" destination="7ae-Br-grk" id="5bq-Cv-hKc"/>
                         <outlet property="currentlyTemp" destination="PRP-ef-rPC" id="8Bo-qE-UVK"/>
                         <outlet property="maxTempLabel" destination="DzT-2M-a6H" id="7G2-rx-sSy"/>
                         <outlet property="minTempLabel" destination="7Mw-N6-zsm" id="8yW-qX-FAv"/>
                         <outlet property="slider" destination="uxG-LW-jw9" id="hee-bZ-4My"/>
+                        <outlet property="statusImage" destination="XdL-WN-bEK" id="dyx-zt-x0c"/>
                         <outlet property="statusLabel" destination="F3G-XJ-DmT" id="8A5-oW-Ubr"/>
                         <outlet property="timeLabel" destination="z98-qF-otC" id="Qo4-Am-arz"/>
                         <outlet property="weekdayLabel" destination="cBq-J4-8cV" id="uFL-Hp-9gc"/>

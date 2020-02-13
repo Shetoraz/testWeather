@@ -9,6 +9,7 @@
 import Foundation
 
 class Model {
+
     var hourWeather = [Int]()
     
 }
