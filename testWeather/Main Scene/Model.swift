@@ -11,5 +11,10 @@ import Foundation
 class Model {
 
     var hourWeather = [Int]()
-    
+
+    func getHourlyWeather(data: Welcome) {
+        for hour in data.hourly.data {
+            self.hourWeather.append(Int(hour.temperature))
+        }
+    }
 }

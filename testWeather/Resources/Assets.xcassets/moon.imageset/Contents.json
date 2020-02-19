@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "noun_Moon_3128937.png"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  },
+  "properties" : {
+    "compression-type" : "lossless"
+  }
+}
