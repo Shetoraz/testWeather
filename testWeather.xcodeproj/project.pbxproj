@@ -46,8 +46,6 @@
 		A926C1CE23C352C40030B799 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				A98948922399535A0055084B /* Main.storyboard */,
-				A98948972399535C0055084B /* LaunchScreen.storyboard */,
 				A98948952399535C0055084B /* Assets.xcassets */,
 				A989489A2399535C0055084B /* Info.plist */,
 			);
@@ -58,7 +56,6 @@
 			isa = PBXGroup;
 			children = (
 				A909101B23C0F917001DB6E4 /* Networker.swift */,
-				A9CD6D6923C0DFD600AA65E9 /* JSONModel.swift */,
 				A9CD6D6B23C0E73500AA65E9 /* LocationService.swift */,
 			);
 			path = Service;
@@ -69,6 +66,7 @@
 			children = (
 				A98948902399535A0055084B /* ViewController.swift */,
 				A977385623F1A73700F84085 /* Model.swift */,
+				A9CD6D6923C0DFD600AA65E9 /* JSONModel.swift */,
 			);
 			path = "Main Scene";
 			sourceTree = "<group>";
@@ -93,11 +91,21 @@
 			isa = PBXGroup;
 			children = (
 				A989488E2399535A0055084B /* AppDelegate.swift */,
+				A9AF6A3D24572ABB009010A0 /* View */,
 				A926C1D323C356910030B799 /* Main Scene */,
 				A926C1CF23C352D30030B799 /* Service */,
 				A926C1CE23C352C40030B799 /* Resources */,
 			);
 			path = testWeather;
+			sourceTree = "<group>";
+		};
+		A9AF6A3D24572ABB009010A0 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				A98948922399535A0055084B /* Main.storyboard */,
+				A98948972399535C0055084B /* LaunchScreen.storyboard */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
